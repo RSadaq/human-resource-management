@@ -15,6 +15,15 @@ namespace HumanResourceManagement
         public Form1()
         {
             InitializeComponent();
+            employer.ConnectToDatabase();
         }
+
+        Employer employer = new Employer();
+       
+        private void assignJobButton_Click(object sender, EventArgs e)
+        {
+            Employee nextEmployee = employer.employees.First();
+            jobsAssignedTextBox.Text = nextEmployee.Name.ToUpper() + " to " + jobsComboBox.SelectedItem + " for " + NoOfShiftsNumericUpDown.Value + " Shifts"; 
+        }       
     }
 }
