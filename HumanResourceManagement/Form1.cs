@@ -19,11 +19,13 @@ namespace HumanResourceManagement
         }
 
         Employer employer = new Employer();
-       
+
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            Employee nextEmployee = employer.employees.First();
-            jobsAssignedTextBox.Text = nextEmployee.Name.ToUpper() + " to " + jobsComboBox.SelectedItem + " for " + NoOfShiftsNumericUpDown.Value + " Shifts"; 
+            Employee nextEmployee = employer.employees.First();//Is this list necessary?
+            jobsAssignedTextBox.Text = nextEmployee.Name.ToUpper() + " to " + jobsComboBox.SelectedItem + " for " + NoOfShiftsNumericUpDown.Value + " Shifts";
+            employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, nextEmployee.Name);
+
         }       
     }
 }
