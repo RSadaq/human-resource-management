@@ -34,6 +34,9 @@
             this.NoOfShiftsNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.assignJobButton = new System.Windows.Forms.Button();
             this.jobsAssignedTextBox = new System.Windows.Forms.TextBox();
+            this.AvlbleEmplysLabel = new System.Windows.Forms.Label();
+            this.AvlbleEmplsComboBox = new System.Windows.Forms.ComboBox();
+            this.AvlblEmplysButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfShiftsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             "Customer Services",
             "Meat",
             "Bakery"});
-            this.jobsComboBox.Location = new System.Drawing.Point(309, 135);
+            this.jobsComboBox.Location = new System.Drawing.Point(689, 300);
             this.jobsComboBox.Name = "jobsComboBox";
             this.jobsComboBox.Size = new System.Drawing.Size(220, 33);
             this.jobsComboBox.TabIndex = 0;
@@ -56,7 +59,7 @@
             // 
             this.jobsLabel.AutoSize = true;
             this.jobsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jobsLabel.Location = new System.Drawing.Point(210, 135);
+            this.jobsLabel.Location = new System.Drawing.Point(223, 302);
             this.jobsLabel.Name = "jobsLabel";
             this.jobsLabel.Size = new System.Drawing.Size(58, 31);
             this.jobsLabel.TabIndex = 1;
@@ -66,7 +69,7 @@
             // 
             this.shiftsLabel.AutoSize = true;
             this.shiftsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shiftsLabel.Location = new System.Drawing.Point(1181, 143);
+            this.shiftsLabel.Location = new System.Drawing.Point(223, 497);
             this.shiftsLabel.Name = "shiftsLabel";
             this.shiftsLabel.Size = new System.Drawing.Size(216, 31);
             this.shiftsLabel.TabIndex = 2;
@@ -74,7 +77,7 @@
             // 
             // NoOfShiftsNumericUpDown
             // 
-            this.NoOfShiftsNumericUpDown.Location = new System.Drawing.Point(1461, 143);
+            this.NoOfShiftsNumericUpDown.Location = new System.Drawing.Point(707, 497);
             this.NoOfShiftsNumericUpDown.Name = "NoOfShiftsNumericUpDown";
             this.NoOfShiftsNumericUpDown.Size = new System.Drawing.Size(120, 31);
             this.NoOfShiftsNumericUpDown.TabIndex = 3;
@@ -82,7 +85,7 @@
             // assignJobButton
             // 
             this.assignJobButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assignJobButton.Location = new System.Drawing.Point(752, 415);
+            this.assignJobButton.Location = new System.Drawing.Point(1868, 593);
             this.assignJobButton.Name = "assignJobButton";
             this.assignJobButton.Size = new System.Drawing.Size(230, 120);
             this.assignJobButton.TabIndex = 4;
@@ -98,11 +101,43 @@
             this.jobsAssignedTextBox.Size = new System.Drawing.Size(2378, 794);
             this.jobsAssignedTextBox.TabIndex = 5;
             // 
+            // AvlbleEmplysLabel
+            // 
+            this.AvlbleEmplysLabel.AutoSize = true;
+            this.AvlbleEmplysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvlbleEmplysLabel.Location = new System.Drawing.Point(203, 80);
+            this.AvlbleEmplysLabel.Name = "AvlbleEmplysLabel";
+            this.AvlbleEmplysLabel.Size = new System.Drawing.Size(265, 31);
+            this.AvlbleEmplysLabel.TabIndex = 6;
+            this.AvlbleEmplysLabel.Text = "Available Employees";
+            // 
+            // AvlbleEmplsComboBox
+            // 
+            this.AvlbleEmplsComboBox.FormattingEnabled = true;
+            this.AvlbleEmplsComboBox.Location = new System.Drawing.Point(678, 83);
+            this.AvlbleEmplsComboBox.Name = "AvlbleEmplsComboBox";
+            this.AvlbleEmplsComboBox.Size = new System.Drawing.Size(375, 33);
+            this.AvlbleEmplsComboBox.TabIndex = 7;
+            // 
+            // AvlblEmplysButton
+            // 
+            this.AvlblEmplysButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AvlblEmplysButton.Location = new System.Drawing.Point(1369, 596);
+            this.AvlblEmplysButton.Name = "AvlblEmplysButton";
+            this.AvlblEmplysButton.Size = new System.Drawing.Size(290, 120);
+            this.AvlblEmplysButton.TabIndex = 9;
+            this.AvlblEmplysButton.Text = "Show me Available Employees";
+            this.AvlblEmplysButton.UseVisualStyleBackColor = true;
+            this.AvlblEmplysButton.Click += new System.EventHandler(this.AvlblEmplysButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2487, 1629);
+            this.Controls.Add(this.AvlblEmplysButton);
+            this.Controls.Add(this.AvlbleEmplsComboBox);
+            this.Controls.Add(this.AvlbleEmplysLabel);
             this.Controls.Add(this.jobsAssignedTextBox);
             this.Controls.Add(this.assignJobButton);
             this.Controls.Add(this.NoOfShiftsNumericUpDown);
@@ -125,6 +160,9 @@
         private System.Windows.Forms.NumericUpDown NoOfShiftsNumericUpDown;
         private System.Windows.Forms.Button assignJobButton;
         private System.Windows.Forms.TextBox jobsAssignedTextBox;
+        private System.Windows.Forms.Label AvlbleEmplysLabel;
+        private System.Windows.Forms.ComboBox AvlbleEmplsComboBox;
+        private System.Windows.Forms.Button AvlblEmplysButton;
     }
 }
 
