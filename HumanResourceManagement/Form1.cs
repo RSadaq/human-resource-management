@@ -34,5 +34,11 @@ namespace HumanResourceManagement
             else
                 MessageBox.Show("Please complete all fields!");
         }
+
+        private void startShiftButton_Click(object sender, EventArgs e)
+        {
+            employer.StartJob();
+            jobsAssignedTextBox.Text += "\r\nSHIFT STARTED!";
+        }
     }
 }

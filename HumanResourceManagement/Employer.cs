@@ -12,7 +12,7 @@ namespace HumanResourceManagement
         public List<Employee> employees = new List<Employee>();
         public string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\feroz\OneDrive\Documents\csharpProjects\HumanResourceManagement\HumanResourceManagement\Employee.mdf;Integrated Security = True";
         
-        public void ConnectToDatabase()//DON'T NEED THIS METHOD IF ASSIGNING JOBS DIRECTLY IN DATABASE!!!!
+        public void ConnectToDatabase()
         {
             SqlConnection con;
             using (con = new SqlConnection(ConnectionString))//'using' so all objects closed correctly.
@@ -54,10 +54,24 @@ namespace HumanResourceManagement
                 con.Close();
             }
         }
-        public void StartJob() { }//Employee starts shifts on given job.
-        //public bool JobFinished() { }//New jobs can only be assigned if system 'knows' when an employee is available.
 
+        public void StartJob()//Employee starts shifts on given job.
+        {
+            SqlConnection con;
+            using (con = new SqlConnection(ConnectionString))
+            {
+                con.Open();
+                SqlCommand command;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                String sql = "";
+                sql = "UPDATE Assignment SET Shifts = Shifts - 1 WHERE Shifts > 0 ";//Once shift starts, minus one from shifts remaining for that job.
+                command = new SqlCommand(sql, con);
+                adapter.UpdateCommand = new SqlCommand(sql, con);
+                adapter.UpdateCommand.ExecuteNonQuery();
+                command.Dispose();
+                con.Close();
+            }
+        }
     }
-
 }
 

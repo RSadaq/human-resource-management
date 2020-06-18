@@ -13,11 +13,7 @@ namespace HumanResourceManagement
     {
         private string name;
         private string [] jobsEmployeeCanDo;
-        private string currentJob;
-        public string JobAssigned;
-        private int numberOfShiftsAssigned;
-        private int numberOfShiftsCompleted;
-
+        
         public Employee(string Name)
         {
             this.name = Name;
@@ -28,32 +24,6 @@ namespace HumanResourceManagement
             get
             {
                 return name;
-            }
-        }
-        
-        public string CurrentJob
-        {
-            get
-            {
-                return currentJob;
-            }
-
-            set
-            {
-                currentJob = JobAssigned; //Value from UI/database
-            }
-        }
-
-        public int NumberOfShifts
-        {
-            get
-            {
-                return numberOfShiftsAssigned;
-            }
-
-            set
-            {
-                numberOfShiftsAssigned = value; //Value from UI/database
             }
         }
     }

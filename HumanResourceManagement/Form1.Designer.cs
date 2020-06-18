@@ -36,6 +36,7 @@
             this.jobsAssignedTextBox = new System.Windows.Forms.TextBox();
             this.AvlbleEmplysLabel = new System.Windows.Forms.Label();
             this.AvlbleEmplsComboBox = new System.Windows.Forms.ComboBox();
+            this.startShiftButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.NoOfShiftsNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,11 +127,23 @@
             this.AvlbleEmplsComboBox.Size = new System.Drawing.Size(190, 21);
             this.AvlbleEmplsComboBox.TabIndex = 7;
             // 
+            // startShiftButton
+            // 
+            this.startShiftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startShiftButton.Location = new System.Drawing.Point(736, 234);
+            this.startShiftButton.Name = "startShiftButton";
+            this.startShiftButton.Size = new System.Drawing.Size(115, 65);
+            this.startShiftButton.TabIndex = 8;
+            this.startShiftButton.Text = "Start Shift!";
+            this.startShiftButton.UseVisualStyleBackColor = true;
+            this.startShiftButton.Click += new System.EventHandler(this.startShiftButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 863);
+            this.Controls.Add(this.startShiftButton);
             this.Controls.Add(this.AvlbleEmplsComboBox);
             this.Controls.Add(this.AvlbleEmplysLabel);
             this.Controls.Add(this.jobsAssignedTextBox);
@@ -158,6 +171,7 @@
         private System.Windows.Forms.TextBox jobsAssignedTextBox;
         private System.Windows.Forms.Label AvlbleEmplysLabel;
         private System.Windows.Forms.ComboBox AvlbleEmplsComboBox;
+        private System.Windows.Forms.Button startShiftButton;
     }
 }
 
