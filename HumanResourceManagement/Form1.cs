@@ -16,30 +16,23 @@ namespace HumanResourceManagement
         {
             InitializeComponent();
             employer.ConnectToDatabase();
+            foreach (Employee nextEmployee in employer.employees)
+            {
+                AvlbleEmplsComboBox.Items.Add(nextEmployee.Name);
+            }
         }
 
         Employer employer = new Employer();
         
         private void assignJobButton_Click(object sender, EventArgs e)
         {
-            if (AvlbleEmplsComboBox.Items.Count == 0)//Job cannot be assigned before an available employee is chosen.
-            {
-                MessageBox.Show("Please select an available employee first!");
-            }
-            else
+            if (jobsComboBox.SelectedItem != null && NoOfShiftsNumericUpDown.Value != 0 && AvlbleEmplsComboBox.SelectedItem != null)//Job will only be assigned if employee and job selected. No. of shifts must be above 0.
             {
                 jobsAssignedTextBox.Text = AvlbleEmplsComboBox.SelectedItem.ToString().ToUpper() + " to " + jobsComboBox.SelectedItem + " for " + NoOfShiftsNumericUpDown.Value + " Shifts";
                 employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, AvlbleEmplsComboBox.SelectedItem.ToString());
             }
-            
-        }
-
-        private void AvlblEmplysButton_Click(object sender, EventArgs e)//Names of employee names from employer.employees list added to items in ComboBox so user can choose which available employee should do chosen job.
-        {
-            foreach (Employee nextEmployee in employer.employees)
-            {
-                AvlbleEmplsComboBox.Items.Add(nextEmployee.Name);
-            }
+            else
+                MessageBox.Show("Please complete all fields!");
         }
     }
 }
