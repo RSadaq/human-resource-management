@@ -14,16 +14,25 @@ namespace HumanResourceManagement
     {
         public Form1()
         {
-            InitializeComponent();
-            employer.ConnectToDatabase();
-            foreach (Employee nextEmployee in employer.employees)
-            {
-                AvlbleEmplsComboBox.Items.Add(nextEmployee.Name);
-            }
+            InitializeComponent();                  
         }
 
         Employer employer = new Employer();
-        
+       
+
+        private void jobsComboBox_SelectedIndexChanged(object sender, EventArgs e)//Show available employees for selected Job.
+        {
+            employer.EmployeesAvailableAndTrained.Clear();
+            AvlbleEmplsComboBox.Items.Clear();
+
+            employer.Getemployees(jobsComboBox.SelectedItem.ToString());
+
+            foreach (KeyValuePair<int, string> emp in employer.EmployeesAvailableAndTrained)
+            {
+                AvlbleEmplsComboBox.Items.Add(emp.Key + ", " + emp.Value);
+            }               
+        }
+
         private void assignJobButton_Click(object sender, EventArgs e)
         {
             if (jobsComboBox.SelectedItem != null && NoOfShiftsNumericUpDown.Value != 0 && AvlbleEmplsComboBox.SelectedItem != null)//Job will only be assigned if employee and job selected. No. of shifts must be above 0.
@@ -40,5 +49,8 @@ namespace HumanResourceManagement
             employer.StartJob();
             jobsAssignedTextBox.Text += "\r\nSHIFT STARTED!";
         }
+
+       
     }
 }
+

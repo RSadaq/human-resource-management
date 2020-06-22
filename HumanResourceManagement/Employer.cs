@@ -9,36 +9,38 @@ namespace HumanResourceManagement
 {
     public class Employer
     {
-        public List<Employee> employees = new List<Employee>();
         public string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\feroz\OneDrive\Documents\csharpProjects\HumanResourceManagement\HumanResourceManagement\Employee.mdf;Integrated Security = True";
-        
-        public void ConnectToDatabase()
+
+        public Dictionary<int, string> EmployeesAvailableAndTrained = new Dictionary<int, string>();
+
+        public void Getemployees(string Job)//This method finds employees are available & who could potentially do the job.
         {
             SqlConnection con;
-            using (con = new SqlConnection(ConnectionString))//'using' so all objects closed correctly.
+            using (con = new SqlConnection(ConnectionString))
             {
                 con.Open();
-                SqlCommand command;//Need this to query
-                SqlDataReader reader;//For viewing result       
+                SqlCommand command;
+                SqlDataReader reader;
                 String sql = "";
-                sql = "SELECT Name FROM Assignment WHERE Current_Job IS NULL OR Current_Job = ' '";
+                sql = "SELECT DISTINCT Assignment.Id, Name FROM Assignment, Jobs WHERE Jobs.Id = Assignment.Id AND (Current_Job IS NULL OR Current_Job = ' ') AND " + Job + " = 1";
                 using (command = new SqlCommand(sql, con))
                 {
                     using (reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            employees.Add(new Employee(reader["Name"].ToString()));
+                            {
+                                EmployeesAvailableAndTrained.Add((int)reader["Id"], reader["Name"].ToString());
+                            }
                         }
                     }
-                }                
-                   
+                }
+
             }
-            
-        } 
-        
-        public void AssignJob(string Job, int Shifts, string Name) //User input provides these arguments.
-        {
+
+        }
+            public void AssignJob(string Job, int Shifts, string Name) //User input provides these arguments - This method confirms user actions & updates database with new jobs & shifts assigned.
+            {
             SqlConnection con;
             using (con = new SqlConnection(ConnectionString))
             {
@@ -55,7 +57,7 @@ namespace HumanResourceManagement
             }
         }
 
-        public void StartJob()//Employee starts shifts on given job.
+        public void StartJob()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database
         {
             SqlConnection con;
             using (con = new SqlConnection(ConnectionString))
@@ -71,7 +73,8 @@ namespace HumanResourceManagement
                 command.Dispose();
                 con.Close();
             }
-        }
+        }    
     }
 }
+
 

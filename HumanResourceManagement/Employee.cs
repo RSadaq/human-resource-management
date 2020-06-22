@@ -12,11 +12,12 @@ namespace HumanResourceManagement
     public class Employee
     {
         private string name;
-        private string [] jobsEmployeeCanDo;
+        private int id;
         
-        public Employee(string Name)
+        public Employee(int Id, string Name)
         {
             this.name = Name;
+            this.id = Id;
         }
 
         public string Name
@@ -26,5 +27,15 @@ namespace HumanResourceManagement
                 return name;
             }
         }
+
+        public int Id
+        {
+            get
+            {
+                return Id;
+            }
+        }
+
+        //Removed properties not needed.
     }
 }
