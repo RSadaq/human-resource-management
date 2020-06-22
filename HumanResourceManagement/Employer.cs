@@ -49,6 +49,7 @@ namespace HumanResourceManagement
                 SqlDataAdapter adapter = new SqlDataAdapter();//For adapting data (deleting, inserting or updating).
                 String sql = "";
                 sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE Current_Job IS NULL OR Current_Job = ' ' AND Name ='" + Name + "'";
+                sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE Current_Job IS NULL OR Current_Job = ' ' AND Name ='" + Name + "'";
                 command = new SqlCommand(sql, con);
                 adapter.UpdateCommand = new SqlCommand(sql, con);
                 adapter.UpdateCommand.ExecuteNonQuery();
