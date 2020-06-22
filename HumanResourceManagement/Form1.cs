@@ -51,9 +51,7 @@ namespace HumanResourceManagement
         {
             employer.StartJob();
             jobsAssignedTextBox.Text += "\r\nSHIFT STARTED!";
-        }
-
-       
+        }       
     }
 }
 
