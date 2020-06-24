@@ -81,6 +81,7 @@
             // 
             // NoOfShiftsNumericUpDown
             // 
+            this.NoOfShiftsNumericUpDown.Enabled = false;
             this.NoOfShiftsNumericUpDown.Location = new System.Drawing.Point(708, 496);
             this.NoOfShiftsNumericUpDown.Margin = new System.Windows.Forms.Padding(4);
             this.NoOfShiftsNumericUpDown.Name = "NoOfShiftsNumericUpDown";
@@ -121,6 +122,7 @@
             // 
             // AvlbleEmplsComboBox
             // 
+            this.AvlbleEmplsComboBox.Enabled = false;
             this.AvlbleEmplsComboBox.FormattingEnabled = true;
             this.AvlbleEmplsComboBox.Location = new System.Drawing.Point(630, 305);
             this.AvlbleEmplsComboBox.Margin = new System.Windows.Forms.Padding(4);
@@ -130,6 +132,7 @@
             // 
             // startShiftButton
             // 
+            this.startShiftButton.Enabled = false;
             this.startShiftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startShiftButton.Location = new System.Drawing.Point(1472, 450);
             this.startShiftButton.Margin = new System.Windows.Forms.Padding(6);

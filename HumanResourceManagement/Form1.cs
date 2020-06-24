@@ -18,10 +18,10 @@ namespace HumanResourceManagement
         }
 
         Employer employer = new Employer();
-       
 
         private void jobsComboBox_SelectedIndexChanged(object sender, EventArgs e)//Show available employees for selected Job.
         {
+            startShiftButton.Enabled = false;
             employer.EmployeesAvailableAndTrained.Clear();
             AvlbleEmplsComboBox.Items.Clear();
 
@@ -30,27 +30,37 @@ namespace HumanResourceManagement
             foreach (KeyValuePair<int, string> emp in employer.EmployeesAvailableAndTrained)
             {
                 AvlbleEmplsComboBox.Items.Add(emp.Key + "," + emp.Value);
-            }               
+            }
+            AvlbleEmplsComboBox.Enabled = true;
+            NoOfShiftsNumericUpDown.Enabled = true;
         }
 
         private void assignJobButton_Click(object sender, EventArgs e)
         {
             if (jobsComboBox.SelectedItem != null && NoOfShiftsNumericUpDown.Value != 0 && AvlbleEmplsComboBox.SelectedItem != null)//Job will only be assigned if employee and job selected. No. of shifts must be above 0.
             {
+                
                 jobsAssignedTextBox.Text = AvlbleEmplsComboBox.SelectedItem.ToString().ToUpper() + " to " + jobsComboBox.SelectedItem + " for " + NoOfShiftsNumericUpDown.Value + " Shifts";
 
                 string EmployeeInfo = AvlbleEmplsComboBox.SelectedItem.ToString();
                 string EmployeeName = EmployeeInfo.Substring(EmployeeInfo.LastIndexOf(',') + 1);
-                employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, EmployeeName);
+                employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, EmployeeName);    
             }
             else
+            {
                 MessageBox.Show("Please complete all fields!");
+            }
+            AvlbleEmplsComboBox.ResetText();
+            startShiftButton.Enabled = true;
+            jobsComboBox.ResetText();
         }
 
         private void startShiftButton_Click(object sender, EventArgs e)
         {
             employer.StartJob();
-            jobsAssignedTextBox.Text += "\r\nSHIFT STARTED!";
+            jobsAssignedTextBox.Text += "\r\nSHIFT STARTED! ";
+            
+               
         }       
     }
 }

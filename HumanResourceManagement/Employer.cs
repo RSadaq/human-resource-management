@@ -48,7 +48,7 @@ namespace HumanResourceManagement
                 SqlCommand command;
                 SqlDataAdapter adapter = new SqlDataAdapter();//For adapting data (deleting, inserting or updating).
                 String sql = "";
-                sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE Current_Job IS NULL OR Current_Job = ' ' AND Name ='" + Name + "'";
+                sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE (Current_Job IS NULL OR Current_Job = ' ') AND Name ='" + Name + "'";
                 command = new SqlCommand(sql, con);
                 adapter.UpdateCommand = new SqlCommand(sql, con);
                 adapter.UpdateCommand.ExecuteNonQuery();
@@ -57,34 +57,12 @@ namespace HumanResourceManagement
             }
         }
 
-        //public void StartJob()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database
-        //{
-        //    SqlConnection con;
-
-        //    using (con = new SqlConnection(ConnectionString))
-        //    {
-
-        //        con.Open();
-        //        SqlCommand command;
-        //        SqlDataAdapter adapter = new SqlDataAdapter();
-        //        String sql = "";
-        //        sql = "UPDATE Assignment SET Shifts = Shifts - 1 WHERE Shifts > 0 ";//Once shift starts, minus one from shifts remaining for that job.
-        //        command = new SqlCommand(sql, con);
-        //        adapter.UpdateCommand = new SqlCommand(sql, con);
-        //        adapter.UpdateCommand.ExecuteNonQuery();
-
-        //        command.Dispose();
-        //        con.Close();
-        //    }
-        //}
-
-        public void StartJob()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database
+             public void StartJob()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database. Current_Job set to NULL if Shifts column is 0.
         {
             SqlConnection con;
 
             using (con = new SqlConnection(ConnectionString))
             {
-
                 con.Open();
                 SqlCommand command;
                 SqlDataAdapter adapter = new SqlDataAdapter();
