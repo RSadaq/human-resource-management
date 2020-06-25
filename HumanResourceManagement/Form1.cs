@@ -21,6 +21,7 @@ namespace HumanResourceManagement
 
         private void jobsComboBox_SelectedIndexChanged(object sender, EventArgs e)//Show available employees for selected Job.
         {
+            AvlbleEmplsComboBox.ResetText();
             startShiftButton.Enabled = false;
             employer.EmployeesAvailableAndTrained.Clear();
             AvlbleEmplsComboBox.Items.Clear();
@@ -44,24 +45,25 @@ namespace HumanResourceManagement
 
                 string EmployeeInfo = AvlbleEmplsComboBox.SelectedItem.ToString();
                 string EmployeeName = EmployeeInfo.Substring(EmployeeInfo.LastIndexOf(',') + 1);
-                employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, EmployeeName);    
+                employer.AssignJob(jobsComboBox.SelectedItem.ToString(), (int)NoOfShiftsNumericUpDown.Value, EmployeeName);
+                AvlbleEmplsComboBox.ResetText();
+                startShiftButton.Enabled = true;
+                NoOfShiftsNumericUpDown.Value = 0;
+                jobsComboBox.ResetText();
             }
             else
             {
                 MessageBox.Show("Please complete all fields!");
             }
-            AvlbleEmplsComboBox.ResetText();
-            startShiftButton.Enabled = true;
-            jobsComboBox.ResetText();
+           
         }
 
         private void startShiftButton_Click(object sender, EventArgs e)
         {
-            employer.StartJob();
+            employer.StartShift();
             jobsAssignedTextBox.Text += "\r\nSHIFT STARTED! ";
-            
-               
-        }       
+            startShiftButton.Enabled = false;
+        }
     }
 }
 

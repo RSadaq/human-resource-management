@@ -19,11 +19,9 @@ namespace HumanResourceManagement
             using (con = new SqlConnection(ConnectionString))
             {
                 con.Open();
-                SqlCommand command;
                 SqlDataReader reader;
-                String sql = "";
-                sql = "SELECT DISTINCT Assignment.Id, Name FROM Assignment, Jobs WHERE Jobs.Id = Assignment.Id AND (Current_Job IS NULL OR Current_Job = ' ') AND " + Job + " = 1";
-                using (command = new SqlCommand(sql, con))
+                String sql = "SELECT DISTINCT Assignment.Id, Name FROM Assignment, Jobs WHERE Jobs.Id = Assignment.Id AND (Current_Job IS NULL OR Current_Job = ' ') AND " + Job + " = 1";
+                using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     using (reader = command.ExecuteReader())
                     {
@@ -45,11 +43,9 @@ namespace HumanResourceManagement
             using (con = new SqlConnection(ConnectionString))
             {
                 con.Open();
-                SqlCommand command;
                 SqlDataAdapter adapter = new SqlDataAdapter();//For adapting data (deleting, inserting or updating).
-                String sql = "";
-                sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE (Current_Job IS NULL OR Current_Job = ' ') AND Name ='" + Name + "'";
-                command = new SqlCommand(sql, con);
+                String sql = "UPDATE Assignment SET Current_Job = '" + Job + "'" + ", Shifts = '" + Shifts + "'" + " WHERE (Current_Job IS NULL OR Current_Job = ' ') AND Name ='" + Name + "'";
+                SqlCommand command = new SqlCommand(sql, con);
                 adapter.UpdateCommand = new SqlCommand(sql, con);
                 adapter.UpdateCommand.ExecuteNonQuery();
                 command.Dispose();
@@ -57,25 +53,21 @@ namespace HumanResourceManagement
             }
         }
 
-             public void StartJob()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database. Current_Job set to NULL if Shifts column is 0.
+        public void StartShift()//Employee starts shifts on given job - minuses 1 from current no. of shifts in database. Current_Job set to NULL if Shifts column is 0.
         {
             SqlConnection con;
 
             using (con = new SqlConnection(ConnectionString))
             {
                 con.Open();
-                SqlCommand command;
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                String sql = "";
-                sql = "UPDATE Assignment SET Shifts = Shifts - 1 WHERE Shifts > 0 ";//Once shift starts, minus one from shifts remaining for that job.
-                command = new SqlCommand(sql, con);
+                String sql = "UPDATE Assignment SET Shifts = Shifts - 1 WHERE Shifts > 0 ";//Once shift starts, minus one from shifts remaining for that job.
+                SqlCommand command = new SqlCommand(sql, con);
                 adapter.UpdateCommand = new SqlCommand(sql, con);
                 adapter.UpdateCommand.ExecuteNonQuery();
 
                 SqlCommand command_1;
-                SqlDataAdapter adapter_1 = new SqlDataAdapter();
-                String sql_1 = "";
-                sql_1 = "UPDATE Assignment SET Current_Job = NULL WHERE Shifts = 0 ";//Once shift starts, minus one from shifts remaining for that job.
+                String sql_1 = "UPDATE Assignment SET Current_Job = NULL WHERE Shifts = 0 ";//Once shift starts, if number of shifts becomes 0, set Current_Job to null.
                 command_1 = new SqlCommand(sql_1, con);
                 adapter.UpdateCommand = new SqlCommand(sql_1, con);
                 adapter.UpdateCommand.ExecuteNonQuery();
