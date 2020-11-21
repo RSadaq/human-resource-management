@@ -15,7 +15,7 @@ namespace HumanResourceManagement
             one.ConnectionString = this.ConnectionString;//Ensures instance of Employer class connects to the dummy database.
         }
 
-        string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\feroz\OneDrive\Documents\csharpProjects\HumanResourceManagement\HumanResourceManagement\HRMTestDatabase.mdf;Integrated Security = True";
+        string ConnectionString = "Your connection strin ggoes here"
         List<String> ls = new List<String>() { "Tills", "Stocking_shelves", "Internet_shopping", "Customer_Services", "Meat", "Bakery" };
         Employer one;
         public int shifts;
