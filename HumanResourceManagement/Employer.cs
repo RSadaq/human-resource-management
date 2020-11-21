@@ -9,7 +9,7 @@ namespace HumanResourceManagement
 {
     public class Employer
     {
-        public string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\feroz\OneDrive\Documents\csharpProjects\HumanResourceManagement\HumanResourceManagement\Employee.mdf;Integrated Security = True";
+        public string ConnectionString = "Your connection string goes here"
 
         public Dictionary<int, string> EmployeesAvailableAndTrained = new Dictionary<int, string>();
 
