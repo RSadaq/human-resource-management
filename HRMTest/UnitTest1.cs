@@ -15,7 +15,7 @@ namespace HumanResourceManagement
             one.ConnectionString = this.ConnectionString;//Ensures instance of Employer class connects to the dummy database.
         }
 
-        string ConnectionString = "Your connection strin ggoes here"
+        string ConnectionString = "Your connection string goes here"
         List<String> ls = new List<String>() { "Tills", "Stocking_shelves", "Internet_shopping", "Customer_Services", "Meat", "Bakery" };
         Employer one;
         public int shifts;
